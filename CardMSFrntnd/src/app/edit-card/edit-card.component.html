@@ -24,7 +24,7 @@
      <br>
       <div class="col-2">
        
-        <input type="text" class="form-control" id="MM" placeholder="MM" formControlName="MM" name="MM" #month>
+        <input type="number" class="form-control" id="MM" placeholder="MM" formControlName="MM" name="MM" #month>
         <p *ngIf="cardForm.controls.MM.errors && !cardForm.controls.MM.dirty" class="alert alert-danger">
           Please Enter Month
           </p>
@@ -34,12 +34,12 @@
       </div>
       <div class="col-2">
        
-        <input type="text" class="form-control" id="YY" placeholder="YY" formControlName="YY" name="YY" #year>
+        <input type="number" class="form-control" id="YY" placeholder="YYYY" formControlName="YY" name="YY" #year>
         <p *ngIf="cardForm.controls.YY.errors && !cardForm.controls.YY.dirty" class="alert alert-danger">
           Please Enter Year
           </p>
           <p *ngIf="cardForm.controls.YY.errors?.min&&cardForm.controls.YY.errors?.max" class="alert alert-danger">
-            Invaliod Year
+            Invalid Year
             </p>
       </div>
     </div>
