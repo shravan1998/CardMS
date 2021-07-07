@@ -1,31 +1,48 @@
-<form>
-    <div class="form-row">
+<form class="container" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <div class="form-row" >
       <div class="form-group col-md-6">
         <label for="CardNo">Card Number</label>
-        <input type="number" class="form-control" id="CardNo" placeholder="Enter Your Credit Card number">
+        <input type="number" class="form-control" id="CardNo" placeholder="Enter Your Credit Card number" formControlName="CardNo" 
+        name="CardNo"
+        #card>
+        <p *ngIf="cardForm.controls.CardNo.errors && !cardForm.controls.CardNo.dirty" class="alert alert-danger">
+          Please enter Credit Card Number
+          </p>
       </div>
-     
+      <div class="form-group col-md-6">
+        <label for="username">Name On Card</label>
+        <input type="text" class="form-control" id="=username" formControlName="username" name="username" #name>
+        <p *ngIf="cardForm.controls.username.errors && !cardForm.controls.username.dirty" class="alert alert-danger">
+          Please Enter Your Name on the credit card
+          </p>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="username">Name On Card</label>
-      <input type="text" class="form-control" id="=username" >
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
+    
+  
     <div class="form-row">
 
      <br>
       <div class="col-2">
        
-        <input type="number" class="form-control" id="expMonth" placeholder="MM">
+        <input type="text" class="form-control" id="MM" placeholder="MM" formControlName="MM" name="MM" #month>
+        <p *ngIf="cardForm.controls.MM.errors && !cardForm.controls.MM.dirty" class="alert alert-danger">
+          Please Enter Month
+          </p>
+          <p *ngIf="cardForm.controls.MM.errors?.min&&cardForm.controls.MM.errors?.max" class="alert alert-danger">
+            Invalid Month
+            </p>
       </div>
       <div class="col-2">
        
-        <input type="number" class="form-control" id="expYear" placeholder="YY">
+        <input type="text" class="form-control" id="YY" placeholder="YY" formControlName="YY" name="YY" #year>
+        <p *ngIf="cardForm.controls.YY.errors && !cardForm.controls.YY.dirty" class="alert alert-danger">
+          Please Enter Year
+          </p>
+          <p *ngIf="cardForm.controls.YY.errors?.min&&cardForm.controls.YY.errors?.max" class="alert alert-danger">
+            Invaliod Year
+            </p>
       </div>
     </div>
   <br>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-success" [disabled]="cardForm.invalid">Submit Card</button>
   </form>
